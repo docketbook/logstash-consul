@@ -1,4 +1,4 @@
-FROM docketbook/alpine-logstash:latest
+FROM docketbook/alpine-logstash:2.3.2
 
 COPY logstash_health.sh /usr/local/bin/logstash_health.sh
 
