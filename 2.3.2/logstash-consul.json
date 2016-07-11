@@ -7,7 +7,10 @@
       "interfaces": ["eth0"],
       "health": "/usr/local/bin/logstash_health.sh",
       "poll": 1,
-      "ttl": 5
+      "ttl": 5,
+      "tags":[
+        "{{.CONSUL_ENVIRONMENT}}"
+      ]
     }
   ]
 }

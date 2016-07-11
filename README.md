@@ -15,7 +15,7 @@ This image also has ContainerPilot installed which with perform basic health/ava
 This image can utilise the following variables
 
 * ```ELASTICSEARCH_HOST``` the hostname of the Elasticsearch host to use in the output pipeline. Since the sniffinf property is set to true, Logstash will use this host to discover other hosts.
-* ```ENVIRONMENT``` the environment to use in the index name. An example would be ```development```
+* ```CONSUL_ENVIRONMENT``` sets the tag to apply to the service registration with Consul
 * ```CONSUL_ADDRESS``` sets the address of the Consul instance to register against. This should be in the form of ```hostname:8500``` such as ```discovery.provider.com:8500```. 
 
 ## Important Ports

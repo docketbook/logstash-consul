@@ -8,6 +8,7 @@ RUN wget -O containerpilot.tar.gz https://github.com/joyent/containerpilot/relea
   chmod +x /usr/local/bin/logstash_health.sh
 
 COPY logstash-consul.json /etc/logstash-consul.json
+COPY configurations/default.conf /logstash/configurations/default.conf
 
 ENV CONTAINERPILOT=file:///etc/logstash-consul.json
 
