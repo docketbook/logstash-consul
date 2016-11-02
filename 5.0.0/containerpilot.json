@@ -1,0 +1,30 @@
+{
+  "consul": "localhost:8500",
+  "preStart": "/usr/local/bin/helper.sh preStart",
+  "services": [
+    {
+      "name": "logstash",
+      "port": 5000,
+      "interfaces": ["eth0"],
+      "health": "/usr/local/bin/helper.sh healthCheck",
+      "poll": {{ if .CONSUL_POLL }}{{ .CONSUL_POLL }}{{ else }}2{{ end }},
+      "ttl": {{ if .CONSUL_TTL }}{{ .CONSUL_TTL }}{{ else }}5{{ end }},
+      "tags":[
+        "{{.CONSUL_ENVIRONMENT}}"
+      ]
+    }
+  ],
+    "coprocesses":[{
+      "command": [
+            "/usr/local/bin/consul", 
+            "agent",
+            "-data-dir=/var/consul/data",
+            "-config-dir=/var/consul/config",
+            "-rejoin",
+            "-retry-join", "{{ .CONSUL_ADDRESS }}",
+            "-retry-max", "10",
+            "-retry-interval", "10s"
+        ],
+    "restarts": "unlimited"
+    }]
+}

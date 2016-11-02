@@ -1,0 +1,3 @@
+{{with $key := env "CONSUL_ENVIRONMENT" | printf "%s/logstash"}}
+{{key $key}}
+{{end}}
